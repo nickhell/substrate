@@ -285,7 +285,7 @@ impl<T: Trait> Module<T> {
 	}
 }
 
-fn extract_inherent_data(data: &InherentData) -> Result<InherentType, RuntimeString> {
+pub fn extract_inherent_data(data: &InherentData) -> Result<InherentType, RuntimeString> {
 	data.get_data::<InherentType>(&INHERENT_IDENTIFIER)
 		.map_err(|_| RuntimeString::from("Invalid timestamp inherent data encoding."))?
 		.ok_or_else(|| "Timestamp inherent data is not provided.".into())
